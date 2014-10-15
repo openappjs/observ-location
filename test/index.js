@@ -1,4 +1,6 @@
 var test = require('tape');
+var window = require('global/window');
+var getIn = require('get-in');
 
 var ObservLocation;
 
@@ -9,11 +11,15 @@ test("require module", function (t) {
   t.end();
 });
 
-test("simple location", function (t) {
+test("get location", function (t) {
   var location = ObservLocation();
-  var end = location(function (value) {
-    console.log(value);
-    t.end();
+  var unlisten = location(function (value) {
+    t.equal(value, getIn(window, ['location', 'href']));
+    end();
   });
-  location.start();
+  function end () {
+    location.stop();
+    unlisten();
+    t.end();
+  }
 });
