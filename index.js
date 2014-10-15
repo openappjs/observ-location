@@ -12,18 +12,22 @@ function ObservLocation (options) {
   // initial location observable
   var location = Observ(getIn(window, ['location', 'href']));
 
+  // save Observ#set for later
+  location._set = location.set;
+
   // on history state change
   history.on('change', function () {
     debug("history changed", window.location);
 
     // update location observable
-    location.set(getIn(window, ['location', 'href']));
+    location._set(getIn(window, ['location', 'href']));
   });
 
   // attach methods
   location.stop = stop(history);
   location.start = start(history);
   location.change = change(history);
+  location.set = set(history);
 
   return location;
 }
@@ -43,8 +47,15 @@ function stop (history) {
 };
 
 function change (history) {
-  return function _observLocation_start (path) {
-    debug("set history", path);
+  return function _observLocation_change (path) {
+    debug("change history", path);
     history.change(path);
   };
 };
+
+function set (history) {
+  return function _observLocation_set (path) {
+    debug("set history", path);
+    history.set(path);
+  }
+}
