@@ -19,7 +19,6 @@ test("get location", function (t) {
     end();
   });
   function end () {
-    location.stop();
     unlisten();
     t.end();
   }
@@ -41,7 +40,6 @@ test("change location path", function (t) {
     unlisten();
     // reset location to original
     location.set(origHref);
-    location.stop();
     t.end();
   }
 });
@@ -63,7 +61,6 @@ test("change location hash", function (t) {
     unlisten();
     // reset location to original
     location.set(origHref);
-    location.stop();
     t.end();
   }
 });

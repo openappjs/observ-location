@@ -11,9 +11,4 @@ var location = ObservLocation();
 var unlisten = location(function (value) {
   console.log(value);
 });
-
-var end = function (unlisten) {
-  location.stop();
-  unlisten();
-}
 ```
