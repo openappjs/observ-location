@@ -2,6 +2,7 @@ var HistoryState = require('history-state');
 var Observ = require('observ');
 var window = require('global/window');
 var debug = require('debug')("observ-location");
+var getIn = require('get-in');
 
 module.exports = ObservLocation;
 
@@ -9,14 +10,14 @@ function ObservLocation (options) {
   var history = HistoryState();
 
   // initial location observable
-  var location = Observ(window.location.href);
+  var location = Observ(getIn(window, ['location', 'href']));
 
   // on history state change
   history.on('change', function () {
     debug("history changed", window.location);
 
     // update location observable
-    location.set(window.location.href);
+    location.set(getIn(window, ['location', 'href']));
   });
 
   // attach methods

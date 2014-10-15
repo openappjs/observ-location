@@ -30,6 +30,7 @@
   "homepage": "https://github.com/unidirectional/observ-location",
   "dependencies": {
     "debug": "^2.0.0",
+    "get-in": "^1.2.0",
     "global": "^4.3.0",
     "history-state": "^1.0.0",
     "observ": "^0.2.0"
