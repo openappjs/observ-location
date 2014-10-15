@@ -2,7 +2,7 @@
 
 an observable `window.location.href`.
 
-``
+```
 var ObservLocation = require('observ-location');
 var location = ObservLocation();
 var end = location(function (value) {
