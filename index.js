@@ -1,5 +1,5 @@
 var HistoryState = require('history-state');
-var window = require('global/window');
+var window = require('./window');
 var debug = require('debug')("observ-location");
 var getIn = require('get-in');
 

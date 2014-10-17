@@ -1,5 +1,5 @@
 var test = require('tape');
-var window = require('global/window');
+var window = require('../window');
 var getIn = require('get-in');
 var Url = require('url');
 
