@@ -8,7 +8,7 @@ module.exports = ObservableLocation;
 function ObservableLocation (options) {
 
   var listeners = [];
-  var history = HistoryState();
+  var history = HistoryState(options);
   var location = getIn(window, ['location', 'href']);
 
   // start copied from https://github.com/Raynos/observ/blob/master/index.js
