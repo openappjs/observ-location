@@ -10,6 +10,7 @@ function ObservableLocation (options) {
   var listeners = [];
   var history = HistoryState(options);
   var location = getIn(window, ['location', 'href']);
+  var started = false;
 
   // start copied from https://github.com/Raynos/observ/blob/master/index.js
   observable._set = function (l) {
@@ -27,7 +28,7 @@ function ObservableLocation (options) {
 
     // *
     // start history on the first listener
-    if (listeners.length === 0) {
+    if (started === false) {
       history.start();
     }
     // *
