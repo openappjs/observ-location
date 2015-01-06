@@ -26,13 +26,15 @@ function ObservableLocation (options) {
       return value;
     }
 
+    listeners.push(listener);
+
     // *
     // start history on the first listener
     if (started === false) {
       history.start();
     }
     // *
-    listeners.push(listener);
+
 
     return function remove() {
       for (var i = 0, len = listeners.length; i < len; i++) {
